@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    kotlin("plugin.serialization")
     id("kotlin-kapt")
 }
 
@@ -55,6 +56,8 @@ dependencies {
     //Retrofit
     implementation(libs.retrofit2.std)
     implementation(libs.retrofit2.converter)
+    implementation(libs.okhhtp.interceptor)
+    implementation(libs.okhttp)
     //Coroutines
     implementation(libs.coroutine.core)
     implementation(libs.coroutines.android)
@@ -69,7 +72,9 @@ dependencies {
     implementation(libs.dagger.runtime)
     //Lifecycle
     implementation(libs.lifycycle.runtime)
-
+    implementation(libs.lifecycle.livedata)
+    //Serializable
+    implementation(libs.sirializable)
 
 
 }

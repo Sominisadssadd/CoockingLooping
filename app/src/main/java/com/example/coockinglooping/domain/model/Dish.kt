@@ -5,5 +5,5 @@ data class Dish(
     private val name: String,
     private val description: String,
     private val imageUrl: String,
-    private val cost: Int
+    private val cost: String
 )

@@ -1,7 +1,8 @@
-package com.example.coockinglooping
+package com.example.coockinglooping.presentation.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.coockinglooping.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

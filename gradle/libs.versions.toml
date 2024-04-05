@@ -54,4 +54,5 @@ dagger-std = { module = "com.google.dagger:dagger", version.ref = "dagger-versio
 dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger-version" }
 dagger-runtime = { module = "com.google.dagger:dagger-android", version.ref = "dagger-runtime-version" }
 #Lifecycle
+lifecycle-livedata = {module = "androidx.lifecycle:lifecycle-livedata-ktx",version.ref ="lifecycle-version"}
 lifycycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime", version.ref = "lifecycle-version" }

@@ -1,8 +1,9 @@
 package com.example.coockinglooping.domain.repository
 
-import com.example.coockinglooping.domain.model.Dish
+import com.example.coockinglooping.domain.model.ListDishes
+
 
 interface DishesRepositoryApi {
 
-    fun getAllDishes(): List<Dish>
+    suspend fun getAllDishes(): ListDishes
 }

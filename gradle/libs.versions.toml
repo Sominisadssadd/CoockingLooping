@@ -32,6 +32,7 @@ image-glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide
 #Room
 junit = { module = "junit:junit", version.ref = "junit" }
 material = { module = "com.google.android.material:material", version.ref = "material" }
+room-ktx = {module = "androidx.room:room-ktx",version.ref = "room-version"}
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room-version" }
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "room-version" }
 #Retrofit

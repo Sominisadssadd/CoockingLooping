@@ -4,8 +4,10 @@ import com.example.coockinglooping.domain.model.Dish
 
 interface DishesRepositoryDb {
 
-    fun getAllDishes(): List<Dish>
+    suspend fun getAllDishes(): List<Dish>
 
-    fun filterDishes(category: String): List<Dish>
+    suspend fun filterDishes(category: List<String>): List<Dish>
+
+    suspend fun addDishes(dishes: List<Dish>)
 
 }

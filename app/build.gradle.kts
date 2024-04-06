@@ -53,6 +53,7 @@ dependencies {
     //Room
     kapt(libs.room.compiler)
     implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
     //Retrofit
     implementation(libs.retrofit2.std)
     implementation(libs.retrofit2.converter)

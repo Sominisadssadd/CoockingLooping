@@ -1,9 +1,10 @@
 package com.example.coockinglooping.domain.model
 
 data class Dish(
-    private val idMeal: Int,
-    private val name: String,
-    private val description: String,
-    private val imageUrl: String,
-    private val cost: String
+    val idMeal: Int,
+    val name: String,
+    val description: String,
+    val imageUrl: String,
+    val cost: String,
+    val category: String
 )

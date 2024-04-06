@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/mainFragment"
+        android:icon="@drawable/bnm_main_icon"
+        android:title="@string/bnm_main_icon_description"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/bnm_person_icon"
+        android:title="@string/bnm_profile_icon_description"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/basketFragment"
+        android:icon="@drawable/bnm_basket_icon"
+        android:title="@string/bnm_basket_icon_description"
+        app:showAsAction="ifRoom" />
+</menu>

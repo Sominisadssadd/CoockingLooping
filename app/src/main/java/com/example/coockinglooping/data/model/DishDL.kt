@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Dish(
+data class DishDL(
     @SerialName(FIELDS_ID) val idMeal: Int,
     @SerialName(FIELDS_NAME) val strMeal: String,
     @SerialName(FIELDS_DESCRIPTION) val strInstructions: String,

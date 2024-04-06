@@ -6,5 +6,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ListDishesDL(
     @SerialName("meals")
-    val meals: List<Dish>
+    val meals: List<DishDL>
 )

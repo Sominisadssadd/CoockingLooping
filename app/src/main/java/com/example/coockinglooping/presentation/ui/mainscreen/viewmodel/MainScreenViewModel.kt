@@ -14,6 +14,7 @@ import com.example.coockinglooping.domain.usecase.UseCaseGetAllDishesFromApi
 import com.example.coockinglooping.domain.usecase.UseCaseGetAllDishesFromDb
 import com.example.coockinglooping.domain.usecase.UseCaseInsertDishesToDb
 import com.example.coockinglooping.presentation.ui.mainscreen.state.MainScreenState
+import com.example.coockinglooping.presentation.utils.listOfDishesDomainToDishPL
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onCompletion
@@ -55,7 +56,7 @@ class MainScreenViewModel(context: Context) : ViewModel() {
                 _stateList.value = MainScreenState.Loading(true)
             }
             .onEach {
-                _stateList.value = MainScreenState.Data(it)
+                _stateList.value = MainScreenState.Data(it.listOfDishesDomainToDishPL())
             }
             .catch {
                 _stateList.value = MainScreenState.Error(it.message.toString())
@@ -89,7 +90,7 @@ class MainScreenViewModel(context: Context) : ViewModel() {
                 _stateList.value = MainScreenState.Loading(true)
             }
             .onEach {
-                _stateList.value = MainScreenState.Data(it)
+                _stateList.value = MainScreenState.Data(it.listOfDishesDomainToDishPL())
             }
             .catch {
                 _stateList.value = MainScreenState.Error(it.message.toString())

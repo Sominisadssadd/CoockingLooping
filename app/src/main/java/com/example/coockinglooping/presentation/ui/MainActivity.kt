@@ -2,28 +2,37 @@ package com.example.coockinglooping.presentation.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import androidx.lifecycle.asLiveData
-import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.ViewModelProvider
 import com.example.coockinglooping.R
-import com.example.coockinglooping.data.repository.ApiRepositoryImpl
-import com.example.coockinglooping.data.repository.DbRepositoryImpl
-import com.example.coockinglooping.domain.model.Dish
-import com.example.coockinglooping.domain.usecase.UseCaseGetAllDishesFromApi
-import com.example.coockinglooping.domain.usecase.UseCaseInsertDishesToDb
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.onCompletion
-import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.launch
+import com.example.coockinglooping.presentation.ui.mainscreen.viewmodel.MainScreenViewModel
+import com.example.coockinglooping.presentation.ui.mainscreen.viewmodel.MainScreenViewModelFactory
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val viewModelFactory = MainScreenViewModelFactory(this)
+        val viewModel = ViewModelProvider(this, viewModelFactory)[MainScreenViewModel::class.java]
+//        viewModel.loadDataFromApi()
+//        viewModel.loadDataFromDataBase()
+//        viewModel.addFilter("Dessert")
+//        viewModel.stateList.observe(this) {
+//            when (it) {
+//                is MainScreenState.Loading -> {
+//
+//                }
+//
+//                is MainScreenState.Error -> {
+////                    snackBarMessageShow("Ошибочка")
+//                }
+//
+//                is MainScreenState.Data -> {
+//                    Toast.makeText(this, it.data.toString(), Toast.LENGTH_LONG).show()
+//                }
+//            }
+//        }
+
 
     }
 }

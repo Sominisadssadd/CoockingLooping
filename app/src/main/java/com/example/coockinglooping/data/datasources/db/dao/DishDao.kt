@@ -13,8 +13,10 @@ import kotlinx.coroutines.flow.Flow
 interface DishDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertDishesEntitiesList(dishList: List<DishEntity>)
+
     @Query(QUERY_GET_LIST_OF_DISHES)
     fun getListOfDishesFromDb(): List<DishEntity>
+
     @Query(QUERY_GET_FILTERED_LIST_OF_DISHES)
     fun getListOfDishesByCategory(categoriesFilter: List<String>): List<DishEntity>
 }

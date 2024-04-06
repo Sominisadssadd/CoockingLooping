@@ -67,7 +67,7 @@ class MainScreenViewModel(context: Context) : ViewModel() {
             .launchIn(viewModelScope)
     }
 
-    fun loadDataFromApi() {
+    private fun loadDataFromApi() {
         useCaseGetAllDishesFromApi()
             .onStart {
                 _stateList.value = MainScreenState.Loading(true)
@@ -85,6 +85,7 @@ class MainScreenViewModel(context: Context) : ViewModel() {
     }
 
     fun loadDataFromDataBase() {
+        loadDataFromApi()
         useCaseGetAllDishesFromDb()
             .onStart {
                 _stateList.value = MainScreenState.Loading(true)

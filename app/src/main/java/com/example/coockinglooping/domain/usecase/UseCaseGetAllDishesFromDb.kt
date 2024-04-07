@@ -9,10 +9,7 @@ import kotlinx.coroutines.flow.flowOn
 
 class UseCaseGetAllDishesFromDb(private val repository: DishesRepositoryDb) {
     operator fun invoke() = flow {
-        while (true) {
             emit(repository.getAllDishes())
-            delay(5000)
-        }
-    }.flowOn(Dispatchers.IO)
+    }
 
 }

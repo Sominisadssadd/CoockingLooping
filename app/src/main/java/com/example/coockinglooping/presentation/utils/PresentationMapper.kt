@@ -18,3 +18,16 @@ fun List<Dish>.listOfDishesDomainToDishPL(): List<DishPL> {
     }
     return presentationDishesList
 }
+
+
+fun Dish.dishDomainToDishPL() : DishPL{
+    val dish = DishPL(
+        idMeal =this.idMeal,
+        name = this.name,
+        description = this.description,
+        imageUrl = this.imageUrl,
+        cost = this.cost,
+        category = this.category
+    )
+    return dish
+}

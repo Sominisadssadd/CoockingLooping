@@ -20,26 +20,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val viewModelFactory = MainScreenViewModelFactory(this)
-        val viewModel = ViewModelProvider(this, viewModelFactory)[MainScreenViewModel::class.java]
-//        viewModel.loadDataFromApi()
-//        viewModel.loadDataFromDataBase()
-//        viewModel.addFilter("Dessert")
-//        viewModel.stateList.observe(this) {
-//            when (it) {
-//                is MainScreenState.Loading -> {
-//
-//                }
-//
-//                is MainScreenState.Error -> {
-////                    snackBarMessageShow("Ошибочка")
-//                }
-//
-//                is MainScreenState.Data -> {
-//                    Toast.makeText(this, it.data.toString(), Toast.LENGTH_LONG).show()
-//                }
-//            }
-//        }
 
     }
 

@@ -9,17 +9,23 @@ import androidx.lifecycle.viewModelScope
 import androidx.room.BuiltInTypeConverters.State
 import com.example.coockinglooping.data.repository.ApiRepositoryImpl
 import com.example.coockinglooping.data.repository.DbRepositoryImpl
+import com.example.coockinglooping.domain.model.Dish
 import com.example.coockinglooping.domain.usecase.UseCaseGetAllDishesByFilters
 import com.example.coockinglooping.domain.usecase.UseCaseGetAllDishesFromApi
 import com.example.coockinglooping.domain.usecase.UseCaseGetAllDishesFromDb
 import com.example.coockinglooping.domain.usecase.UseCaseInsertDishesToDb
 import com.example.coockinglooping.presentation.ui.mainscreen.state.MainScreenState
+import com.example.coockinglooping.presentation.utils.dishDomainToDishPL
 import com.example.coockinglooping.presentation.utils.listOfDishesDomainToDishPL
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.launch
 
 class MainScreenViewModel(context: Context) : ViewModel() {
 
@@ -67,39 +73,26 @@ class MainScreenViewModel(context: Context) : ViewModel() {
             .launchIn(viewModelScope)
     }
 
-    private fun loadDataFromApi() {
+    private fun loadDataFromApi(): Flow<List<Dish>> = flow {
         useCaseGetAllDishesFromApi()
-            .onStart {
-                _stateList.value = MainScreenState.Loading(true)
-            }
-            .onEach {
+            .collect {
                 useCaseInsertDishesToDb(it.meals)
+                emit(it.meals)
             }
-            .catch {
-                _stateList.value = MainScreenState.Error(it.message.toString())
-            }
-            .onCompletion {
-                _stateList.value = MainScreenState.Loading(false)
-            }
-            .launchIn(viewModelScope)
     }
 
     fun loadDataFromDataBase() {
-        loadDataFromApi()
-        useCaseGetAllDishesFromDb()
-            .onStart {
-                _stateList.value = MainScreenState.Loading(true)
-            }
-            .onEach {
-                _stateList.value = MainScreenState.Data(it.listOfDishesDomainToDishPL())
-            }
-            .catch {
-                _stateList.value = MainScreenState.Error(it.message.toString())
-            }
-            .onCompletion {
+        viewModelScope.launch {
+            _stateList.value = MainScreenState.Loading(true)
+            try {
+                val dishes = loadDataFromApi().first()
+                _stateList.value = MainScreenState.Data(dishes.map { it.dishDomainToDishPL() })
+            } catch (e: Exception) {
+                _stateList.value = MainScreenState.Error(e.message.toString())
+            } finally {
                 _stateList.value = MainScreenState.Loading(false)
             }
-            .launchIn(viewModelScope)
+        }
     }
 
 
